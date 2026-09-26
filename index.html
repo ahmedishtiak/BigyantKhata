@@ -195,7 +195,8 @@ html[lang="bn"] .lede h1{line-height:1.18;letter-spacing:-.01em;font-size:clamp(
 .plate .ln2{fill:none;stroke:var(--ink);stroke-width:1;opacity:.45}
 .plate .fl{fill:var(--ink);opacity:.07;stroke:none}
 .plate .fl2{fill:var(--accent-soft);opacity:.24;stroke:none}
-.plate .mk circle{fill:var(--accent);stroke:none}
+.plate .mk circle{fill:var(--accent);stroke:var(--on-accent);stroke-width:1.4}
+.plate-defs{position:absolute;width:0;height:0;overflow:hidden}
 .plate .mk text{fill:var(--on-accent);stroke:none;font-family:var(--mono);font-size:11px;font-weight:600}
 .plate .lbl{fill:var(--ink);stroke:none;font-family:var(--mono);font-size:13px;font-weight:500}
 
@@ -399,6 +400,55 @@ html[lang="bn"] .facts li::before{content:counter(f,bengali)}
 </head>
 <body>
 <a class="skip" href="#main" id="skipLink">Skip to content</a>
+<svg class="plate-defs" aria-hidden="true" focusable="false" width="0" height="0"><defs>
+<filter id="bk-soft" x="-10%" y="-10%" width="120%" height="120%"><feGaussianBlur stdDeviation="1.1"/></filter>
+<filter id="bk-mist" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="2.4"/></filter>
+<filter id="bk-blur" x="-40%" y="-40%" width="180%" height="180%"><feGaussianBlur stdDeviation="3.2"/></filter>
+<filter id="bk-glow" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="5"/></filter>
+<filter id="bk-grain" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency=".85" numOctaves="3" seed="7" result="n"/><feColorMatrix in="n" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  .55 0 0 0 -.12" result="d"/><feComposite in="d" in2="SourceGraphic" operator="in" result="m"/><feMerge><feMergeNode in="SourceGraphic"/><feMergeNode in="m"/></feMerge></filter>
+<filter id="bk-tissue" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency=".06 .55" numOctaves="2" seed="4" result="n"/><feColorMatrix in="n" type="matrix" values="0 0 0 0 .3  0 0 0 0 0  0 0 0 0 .05  .45 0 0 0 -.1" result="d"/><feComposite in="d" in2="SourceGraphic" operator="in" result="m"/><feMerge><feMergeNode in="SourceGraphic"/><feMergeNode in="m"/></feMerge></filter>
+
+<filter id="bk-cloud" x="-20%" y="-30%" width="140%" height="160%"><feGaussianBlur stdDeviation="2.2"/></filter>
+<filter id="bk-plume" x="-40%" y="-60%" width="180%" height="220%"><feGaussianBlur stdDeviation="4.5"/></filter>
+<clipPath id="bk-heartClip"><path d="M122 72 C98 88 94 126 116 150 C134 170 158 184 180 180 C206 172 230 138 226 104 C223 80 206 66 182 66 C162 66 140 64 122 72 Z"/></clipPath>
+<clipPath id="bk-coneClip"><path d="M18 152 C58 124 98 74 122 56 C130 52 150 52 158 56 C182 74 222 124 262 152 Z"/></clipPath>
+<linearGradient id="bk-section" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#6A5446"/><stop offset=".5" stop-color="#4C3C33"/><stop offset="1" stop-color="#33271F"/></linearGradient>
+<linearGradient id="bk-wisp" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stop-color="#FFFFFF" stop-opacity=".75"/><stop offset="1" stop-color="#FFFFFF" stop-opacity="0"/></linearGradient>
+<!-- weather -->
+<linearGradient id="bk-sky1" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#6F8497"/><stop offset=".5" stop-color="#9DAFBC"/><stop offset=".78" stop-color="#D5DCDB"/><stop offset="1" stop-color="#E8E4D8"/></linearGradient>
+<radialGradient id="bk-sun"><stop offset="0" stop-color="#FFFBEA"/><stop offset=".22" stop-color="#FFEDB8"/><stop offset=".5" stop-color="#FFD98C" stop-opacity=".45"/><stop offset="1" stop-color="#FFD98C" stop-opacity="0"/></radialGradient>
+
+<linearGradient id="bk-seaDeep" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#5B7A82"/><stop offset="1" stop-color="#1F333C"/></linearGradient>
+<radialGradient id="bk-puff" cx=".42" cy=".32" r=".72"><stop offset="0" stop-color="#FFFFFF"/><stop offset=".42" stop-color="#E9EDEF"/><stop offset=".78" stop-color="#A6B1BA"/><stop offset="1" stop-color="#7C8894"/></radialGradient>
+<radialGradient id="bk-puffDark" cx=".5" cy=".3" r=".75"><stop offset="0" stop-color="#9AA6B0"/><stop offset=".6" stop-color="#6A7783"/><stop offset="1" stop-color="#4B5764"/></radialGradient>
+<linearGradient id="bk-veil" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#5D6D7A" stop-opacity=".75"/><stop offset="1" stop-color="#7E8E98" stop-opacity="0"/></linearGradient>
+
+<!-- fire -->
+<linearGradient id="bk-dusk" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1E1F2C"/><stop offset=".45" stop-color="#3D3040"/><stop offset=".8" stop-color="#7A4A45"/><stop offset="1" stop-color="#A2614C"/></linearGradient>
+<linearGradient id="bk-rock" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#2A2420"/><stop offset=".42" stop-color="#5B4E45"/><stop offset=".56" stop-color="#4A3E36"/><stop offset="1" stop-color="#1F1A17"/></linearGradient>
+<linearGradient id="bk-strata" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#4A3A31"/><stop offset="1" stop-color="#211915"/></linearGradient>
+<radialGradient id="bk-magma" cx=".5" cy=".45" r=".6"><stop offset="0" stop-color="#FFF4C2"/><stop offset=".25" stop-color="#FFC45A"/><stop offset=".6" stop-color="#E55B25"/><stop offset="1" stop-color="#6E1A10"/></radialGradient>
+<radialGradient id="bk-heat"><stop offset="0" stop-color="#FF9D3C" stop-opacity=".85"/><stop offset=".55" stop-color="#E0562A" stop-opacity=".3"/><stop offset="1" stop-color="#E0562A" stop-opacity="0"/></radialGradient>
+<linearGradient id="bk-conduit" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFE9A0"/><stop offset=".35" stop-color="#FFA23E"/><stop offset="1" stop-color="#C53E1C"/></linearGradient>
+<radialGradient id="bk-ash" cx=".45" cy=".35" r=".7"><stop offset="0" stop-color="#8A837E"/><stop offset=".6" stop-color="#4E4845"/><stop offset="1" stop-color="#2A2624"/></radialGradient>
+
+<!-- body -->
+<radialGradient id="bk-studio" cx=".5" cy=".42" r=".75"><stop offset="0" stop-color="#F6F1E9"/><stop offset=".7" stop-color="#E2D9CC"/><stop offset="1" stop-color="#C9BEAF"/></radialGradient>
+<radialGradient id="bk-myo" cx=".36" cy=".28" r=".85"><stop offset="0" stop-color="#E88C78"/><stop offset=".28" stop-color="#C4473A"/><stop offset=".62" stop-color="#8E2127"/><stop offset="1" stop-color="#4A0E16"/></radialGradient>
+<radialGradient id="bk-atrium" cx=".4" cy=".3" r=".8"><stop offset="0" stop-color="#B85D6A"/><stop offset=".6" stop-color="#7C2B3C"/><stop offset="1" stop-color="#4A1526"/></radialGradient>
+<linearGradient id="bk-artery" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#6E1419"/><stop offset=".42" stop-color="#D0544A"/><stop offset=".6" stop-color="#B53A36"/><stop offset="1" stop-color="#6A1318"/></linearGradient>
+<linearGradient id="bk-vein" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#1F2B5A"/><stop offset=".42" stop-color="#6A80C2"/><stop offset=".6" stop-color="#4A5F9E"/><stop offset="1" stop-color="#1C2652"/></linearGradient>
+<linearGradient id="bk-pulm" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#34275E"/><stop offset=".42" stop-color="#8C78C4"/><stop offset=".6" stop-color="#6A58A2"/><stop offset="1" stop-color="#2E2356"/></linearGradient>
+<radialGradient id="bk-fat" cx=".4" cy=".35" r=".7"><stop offset="0" stop-color="#FFF4D2"/><stop offset="1" stop-color="#DDB86A"/></radialGradient>
+<radialGradient id="bk-spec"><stop offset="0" stop-color="#FFFFFF" stop-opacity=".8"/><stop offset="1" stop-color="#FFFFFF" stop-opacity="0"/></radialGradient>
+<radialGradient id="bk-floor" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#3A2A24" stop-opacity=".35"/><stop offset="1" stop-color="#3A2A24" stop-opacity="0"/></radialGradient>
+
+<!-- cosmos -->
+<radialGradient id="bk-void" cx=".5" cy=".5" r=".75"><stop offset="0" stop-color="#171B2C"/><stop offset=".55" stop-color="#090B14"/><stop offset="1" stop-color="#030407"/></radialGradient>
+<linearGradient id="bk-disk" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#FFF7DE"/><stop offset=".22" stop-color="#FFD58A"/><stop offset=".55" stop-color="#F08A3A"/><stop offset=".85" stop-color="#A5341A"/><stop offset="1" stop-color="#4A1208"/></linearGradient>
+<linearGradient id="bk-diskFar" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#FFE7B0"/><stop offset=".5" stop-color="#F29A48"/><stop offset="1" stop-color="#8E2C14"/></linearGradient>
+<radialGradient id="bk-halo"><stop offset="0" stop-color="#FFB45C" stop-opacity=".42"/><stop offset=".6" stop-color="#C8502A" stop-opacity=".12"/><stop offset="1" stop-color="#C8502A" stop-opacity="0"/></radialGradient>
+</defs></svg>
 
 <header class="mast" id="mast">
   <div class="wrap mastin">
@@ -571,11 +621,109 @@ html[lang="bn"] .facts li::before{content:counter(f,bengali)}
 const M=(x,y,n)=>`<g class="mk"><circle cx="${x}" cy="${y}" r="9.5"/><text x="${x}" y="${y+3.7}" text-anchor="middle">${n}</text></g>`;
 const S=i=>`<svg viewBox="0 0 320 190" role="img" aria-hidden="true">${i}</svg>`;
 
+/* shaded illustrations — see design-system/bigyankhata/illustration-philosophy.md */
+const RND=n=>{const v=Math.sin(n*12.9898+78.233)*43758.5453;return v-Math.floor(v)};
+const PUFF=(list,fill)=>list.map(p=>`<circle cx="${p[0]}" cy="${p[1]}" r="${p[2]}" fill="${fill}"/>`).join("");
+
+const ILL={};
+
+/* 001 · rain */
+ILL[1]=`<rect width="320" height="190" fill="url(#bk-sky1)"/>
+<circle cx="44" cy="36" r="54" fill="url(#bk-sun)"/><circle cx="44" cy="36" r="10.5" fill="#FFF8E2"/>
+<g filter="url(#bk-plume)" opacity=".35" fill="#F4F6F6">${PUFF([[250,30,14],[272,26,18],[296,30,14],[20,70,10],[40,66,12]],"#F4F6F6")}</g>
+<path d="M0 128 C38 116 70 122 104 126 C140 131 172 114 212 120 C252 126 284 115 320 121 V142 H0 Z" fill="#7E8E86" opacity=".65" filter="url(#bk-soft)"/>
+<path d="M0 136 C60 129 118 135 178 131 C238 127 282 133 320 130 V142 H0 Z" fill="#55665E"/>
+<rect y="140" width="320" height="50" fill="url(#bk-seaDeep)"/>
+<g fill="none" stroke="#B8CDD1" stroke-width=".6">${Array.from({length:15},(_,k)=>`<path stroke-opacity="${(.1+k*.012).toFixed(3)}" d="M${(-20+RND(k)*20).toFixed(1)} ${143+k*3.2} q20 -${(.8+k*.05).toFixed(2)} 40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0"/>`).join("")}</g>
+<g fill="#FFF0C2">${Array.from({length:30},(_,k)=>`<rect x="${(18+RND(k+3)*62).toFixed(1)}" y="${(142+k*1.5).toFixed(1)}" width="${(3+RND(k+11)*13).toFixed(1)}" height=".7" opacity="${(.75-k*.02).toFixed(2)}"/>`).join("")}</g>
+<g filter="url(#bk-mist)" fill="none" stroke="url(#bk-wisp)" stroke-linecap="round">${[0,1,2,3,4,5,6].map(k=>`<path d="M${230+k*11} 141 c-8 -8 8 -15 -1 -24 c-7 -8 6 -13 0 -21 c-5 -6 4 -10 1 -16" stroke-width="${(4.2-k*.35).toFixed(2)}" opacity="${(.95-k*.08).toFixed(2)}"/>`).join("")}</g>
+<g fill="none" stroke="#FFFFFF" stroke-linecap="round" stroke-width=".8" opacity=".45" filter="url(#bk-soft)">${[0,2,4].map(k=>`<path d="M${230+k*11} 141 c-8 -8 8 -15 -1 -24 c-7 -8 6 -13 0 -21"/>`).join("")}</g>
+<ellipse cx="164" cy="104" rx="80" ry="12" fill="#4E5A66" filter="url(#bk-cloud)"/>
+<g filter="url(#bk-cloud)">${PUFF([[100,100,14],[120,95,18],[146,92,22],[176,92,23],[204,95,19],[228,101,12]],"url(#bk-puffDark)")}</g>
+<g filter="url(#bk-cloud)">${PUFF([[118,84,14],[132,74,15],[160,66,20],[186,64,20],[204,72,16],[110,90,15],[126,80,19],[144,68,24],[166,58,27],[190,56,26],[210,64,22],[226,78,17],[238,92,11],[136,86,20],[158,80,24],[184,78,24],[206,84,20],[222,92,14],[152,50,16],[176,44,17],[198,48,14]],"url(#bk-puff)")}</g>
+<g filter="url(#bk-soft)" opacity=".55">${PUFF([[150,58,10],[172,46,11],[194,50,9],[134,72,9]],"#FFFFFF")}</g>
+<ellipse cx="214" cy="84" rx="30" ry="22" fill="#5A6773" opacity=".28" filter="url(#bk-plume)"/>
+<path d="M100 108 L228 108 L216 152 L88 152 Z" fill="url(#bk-veil)" filter="url(#bk-soft)"/>
+<g stroke="#D3DEE5" stroke-linecap="round">${Array.from({length:110},(_,k)=>{const x=98+RND(k)*126,y=110+RND(k+200)*26,l=10+RND(k+400)*22;return `<line x1="${x.toFixed(1)}" y1="${y.toFixed(1)}" x2="${(x-3.4).toFixed(1)}" y2="${(y+l).toFixed(1)}" stroke-width="${(.4+RND(k+600)*.4).toFixed(2)}" stroke-opacity="${(.25+RND(k+800)*.55).toFixed(2)}"/>`}).join("")}</g>
+<g fill="none" stroke="#D6E6EA" stroke-width=".5">${Array.from({length:18},(_,k)=>`<ellipse cx="${(92+RND(k+40)*120).toFixed(1)}" cy="${(147+RND(k+60)*16).toFixed(1)}" rx="${(1.6+RND(k+90)*3.4).toFixed(1)}" ry="${(.5+RND(k+90)*.7).toFixed(2)}" stroke-opacity="${(.35+RND(k+120)*.4).toFixed(2)}"/>`).join("")}</g>
+${M(252,118,1)}${M(204,62,2)}${M(142,152,3)}`;
+
+/* 006 · volcano */
+ILL[6]=`<rect width="320" height="190" fill="url(#bk-dusk)"/>
+<g fill="#FFFFFF">${Array.from({length:26},(_,k)=>`<circle cx="${(RND(k+5)*320).toFixed(1)}" cy="${(RND(k+55)*56).toFixed(1)}" r="${(.3+RND(k+95)*.5).toFixed(2)}" opacity="${(.2+RND(k+135)*.5).toFixed(2)}"/>`).join("")}</g>
+<path d="M0 128 C30 118 60 124 90 116 L110 112 L130 120 C170 126 220 110 262 118 C288 122 306 116 320 118 V152 H0 Z" fill="#2A2229" opacity=".85"/>
+<g filter="url(#bk-plume)">${PUFF([[140,44,9],[144,36,11],[148,30,13],[153,25,15],[160,20,17],[168,16,19],[178,13,20],[190,11,21],[202,10,22],[214,10,22],[226,11,21],[238,13,20],[250,15,19],[262,17,17],[274,19,15],[286,21,13],[298,23,11],[156,34,10],[170,26,12],[186,22,13],[204,20,14],[222,20,14],[240,22,13],[260,26,11]],"url(#bk-ash)")}</g>
+<g filter="url(#bk-plume)" opacity=".55">${PUFF([[142,46,8],[148,38,9]],"#E0703A")}</g>
+<ellipse cx="140" cy="54" rx="48" ry="28" fill="url(#bk-heat)"/>
+<path d="M0 152 L18 152 C58 124 98 74 122 56 C130 52 150 52 158 56 C182 74 222 124 262 152 L320 152 V190 H0 Z" fill="url(#bk-rock)" filter="url(#bk-grain)"/>
+<g fill="none" stroke="#15110F" stroke-linecap="round" opacity=".32">${[[-1,.9],[-.8,.6],[-.55,.8],[-.3,.6],[.62,.7],[.8,.6],[1,.9]].map((g,k)=>`<path d="M${(140+g[0]*14).toFixed(1)} 58 C${(140+g[0]*40).toFixed(1)} 90 ${(140+g[0]*80).toFixed(1)} 120 ${(140+g[0]*118).toFixed(1)} 150" stroke-width="${(.5+RND(k)*.6).toFixed(2)}" opacity="${g[1]}"/>`).join("")}</g>
+<path d="M158 56 C182 74 222 124 262 152" fill="none" stroke="#FF9A4A" stroke-width="1.2" stroke-opacity=".35" filter="url(#bk-soft)"/>
+<g clip-path="url(#bk-coneClip)">
+<path d="M126 55 L154 55 L190 152 L90 152 Z" fill="url(#bk-section)" filter="url(#bk-grain)"/>
+<path d="M126 55 L90 152 M154 55 L190 152" stroke="#8C6E5A" stroke-width=".5" stroke-opacity=".35" fill="none"/>
+</g>
+<path d="M156 57 C163 72 173 80 179 96 C185 111 198 119 208 138" fill="none" stroke="#FF7A24" stroke-width="5" stroke-linecap="round" opacity=".5" filter="url(#bk-mist)"/>
+<path d="M156 57 C163 72 173 80 179 96 C185 111 198 119 208 138" fill="none" stroke="#FF9A38" stroke-width="2" stroke-linecap="round"/>
+<path d="M156 57 C163 72 173 80 179 96 C185 111 198 119 208 138" fill="none" stroke="#FFE7A0" stroke-width=".6" stroke-linecap="round"/>
+<rect y="152" width="320" height="38" fill="url(#bk-strata)" filter="url(#bk-grain)"/>
+<g fill="none" stroke-linecap="round">${[159,166,174,183].map((y,k)=>`<path d="M0 ${y} C60 ${y-3} 110 ${y+3} 170 ${y} S280 ${y-2} 320 ${y+1}" stroke="${k%2?"#5A473B":"#1A1310"}" stroke-width="${k%2?1.4:.8}" stroke-opacity=".7"/>`).join("")}</g>
+<path d="M0 152 H320" stroke="#140F0C" stroke-width="1"/>
+<ellipse cx="140" cy="176" rx="100" ry="24" fill="url(#bk-heat)" filter="url(#bk-mist)"/>
+<ellipse cx="140" cy="176" rx="62" ry="11" fill="url(#bk-magma)"/>
+<path d="M131 168 C134 132 135 96 136 58 L144 58 C145 96 146 132 149 168 Z" fill="#FF8A30" opacity=".55" filter="url(#bk-mist)"/>
+<path d="M134.5 168 C136.5 132 137.2 96 137.6 58 L142.4 58 C142.8 96 143.5 132 145.5 168 Z" fill="url(#bk-conduit)"/>
+<g fill="#FFB04A">${Array.from({length:28},(_,k)=>{const a=-Math.PI/2+(RND(k+7)-.5)*1.6,d=5+RND(k+31)*22;return `<circle cx="${(140+Math.cos(a)*d).toFixed(1)}" cy="${(52+Math.sin(a)*d).toFixed(1)}" r="${(.45+RND(k+63)*1).toFixed(2)}" opacity="${(.45+RND(k+87)*.55).toFixed(2)}"/>`}).join("")}</g>
+<ellipse cx="140" cy="54" rx="9" ry="3" fill="#FFE7A0"/>
+${M(208,176,1)}${M(160,104,2)}${M(214,34,3)}`;
+
+/* 042 · heart */
+ILL[42]=`<rect width="320" height="190" fill="url(#bk-studio)"/>
+<ellipse cx="166" cy="180" rx="76" ry="7" fill="url(#bk-floor)"/>
+<path d="M114 62 C113 44 110 22 112 0" stroke="url(#bk-vein)" stroke-width="15" fill="none"/>
+<path d="M108 6 C110 20 110 40 110 58" stroke="#FFFFFF" stroke-opacity=".28" stroke-width="2.4" fill="none" filter="url(#bk-soft)"/>
+<path d="M148 76 C146 50 148 30 164 22 C184 12 208 18 218 34 C222 42 222 50 220 58" stroke="url(#bk-artery)" stroke-width="16" fill="none" stroke-linecap="round"/>
+<path d="M152 60 C152 42 158 30 170 24 C184 18 200 20 210 28" stroke="#FFFFFF" stroke-opacity=".3" stroke-width="2.2" fill="none" filter="url(#bk-soft)"/>
+<g stroke="url(#bk-artery)" stroke-width="5.5" fill="none" stroke-linecap="round"><path d="M166 20 C166 12 166 6 166 0"/><path d="M182 16 C184 10 186 5 187 0"/><path d="M198 19 C202 12 206 6 209 0"/></g>
+<path d="M221 48 C230 54 236 60 242 70" stroke="#5E1116" stroke-width="11" fill="none" stroke-linecap="round" opacity=".8"/>
+<ellipse cx="114" cy="84" rx="26" ry="22" fill="url(#bk-atrium)" filter="url(#bk-tissue)"/>
+<path d="M200 70 C214 64 230 70 232 82 C226 90 212 90 202 86 Z" fill="url(#bk-atrium)"/>
+<path d="M122 72 C98 88 94 126 116 150 C134 170 158 184 180 180 C206 172 230 138 226 104 C223 80 206 66 182 66 C162 66 140 64 122 72 Z" fill="url(#bk-myo)" filter="url(#bk-tissue)"/>
+<g clip-path="url(#bk-heartClip)">
+<path d="M122 72 C98 88 94 126 116 150 C134 170 158 184 180 180 C206 172 230 138 226 104 C223 80 206 66 182 66 C162 66 140 64 122 72 Z" fill="none" stroke="#2E0509" stroke-width="10" stroke-opacity=".55" filter="url(#bk-mist)"/>
+<path d="M170 72 C174 96 172 122 178 150 C181 162 182 172 180 180" fill="none" stroke="#3A070C" stroke-width="7" stroke-opacity=".35" filter="url(#bk-mist)"/>
+</g>
+<path d="M186 74 C184 56 186 42 198 34 C208 30 220 34 228 42 C234 46 240 48 246 48" stroke="url(#bk-pulm)" stroke-width="13" fill="none" stroke-linecap="round"/>
+<path d="M190 60 C190 48 194 40 202 36" stroke="#FFFFFF" stroke-opacity=".3" stroke-width="2" fill="none" filter="url(#bk-soft)"/>
+<path d="M171 74 C175 96 173 122 179 150 C182 162 183 170 181 176" fill="none" stroke="url(#bk-fat)" stroke-width="4.4" stroke-linecap="round" opacity=".85" filter="url(#bk-soft)"/>
+<path d="M171 74 C175 96 173 122 179 150 C182 162 183 170 181 176" fill="none" stroke="#7E1A20" stroke-width="1.3" stroke-linecap="round"/>
+<g fill="none" stroke="#7E1A20" stroke-width=".8" stroke-linecap="round" opacity=".75"><path d="M174 96 C161 104 151 116 145 130"/><path d="M176 118 C189 124 199 132 205 146"/><path d="M175 134 C165 142 157 152 153 164"/><path d="M128 80 C122 96 118 112 120 128"/><path d="M146 130 C140 138 138 146 138 154"/></g>
+<ellipse cx="142" cy="96" rx="20" ry="9" fill="url(#bk-spec)" transform="rotate(-26 142 96)"/>
+<ellipse cx="208" cy="106" rx="7" ry="15" fill="url(#bk-spec)" opacity=".4" transform="rotate(14 208 106)"/>
+<ellipse cx="108" cy="78" rx="8" ry="4" fill="url(#bk-spec)" opacity=".45"/>
+${M(130,138,1)}${M(210,134,2)}${M(166,76,3)}`;
+
+/* 058 · black hole */
+ILL[58]=`<rect width="320" height="190" fill="url(#bk-void)"/>
+<g fill="#FFFFFF">${Array.from({length:160},(_,k)=>{const x=RND(k+1)*320,y=RND(k+501)*190,dx=x-160,dy=(y-96)*2.4,dd=Math.sqrt(dx*dx+dy*dy);if(dd<84)return "";return `<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="${(.22+Math.pow(RND(k+901),3)*1.1).toFixed(2)}" opacity="${(.2+RND(k+1301)*.7).toFixed(2)}"/>`}).join("")}</g>
+<ellipse cx="160" cy="96" rx="156" ry="64" fill="url(#bk-halo)"/>
+<g filter="url(#bk-mist)"><path d="M34 96 A126 14 0 0 1 286 96" fill="none" stroke="url(#bk-diskFar)" stroke-width="9" opacity=".7"/></g>
+<path d="M34 96 A126 14 0 0 1 286 96" fill="none" stroke="url(#bk-diskFar)" stroke-width="3" opacity=".9"/>
+<g filter="url(#bk-blur)"><path d="M118 97 C118 56 139 41 160 41 C181 41 202 56 202 97" fill="none" stroke="url(#bk-diskFar)" stroke-width="14" opacity=".75"/></g>
+<path d="M120 97 C120 58 140 43.5 160 43.5 C180 43.5 200 58 200 97" fill="none" stroke="#FFE7B4" stroke-width="1.4" opacity=".7"/>
+<g filter="url(#bk-soft)"><path d="M127 100 C129 126 145 138 160 138 C175 138 191 126 193 100" fill="none" stroke="url(#bk-diskFar)" stroke-width="3" opacity=".55"/></g>
+<circle cx="160" cy="96" r="27.6" fill="none" stroke="#FFF1CC" stroke-width="1.2" opacity=".95" filter="url(#bk-soft)"/>
+<circle cx="160" cy="96" r="26" fill="#000000"/>
+<g filter="url(#bk-mist)"><path d="M34 96 A126 14 0 0 0 286 96" fill="none" stroke="url(#bk-disk)" stroke-width="11"/></g>
+<path d="M34 96 A126 14 0 0 0 286 96" fill="none" stroke="url(#bk-disk)" stroke-width="5"/>
+<path d="M56 100 A104 9.5 0 0 0 264 100" fill="none" stroke="#FFF6DA" stroke-width=".9" opacity=".75"/>
+<g fill="none" stroke="#FFD08A" stroke-width=".45" opacity=".35">${[0,1,2,3].map(k=>`<ellipse cx="160" cy="96" rx="${92+k*10}" ry="${(9+k*1.3).toFixed(1)}"/>`).join("")}</g>
+${M(160,94,1)}${M(186,68,2)}${M(274,108,3)}`;
+
 const TOPICS_1=[
 {i:1,cat:"earth",k:"rain water cycle evaporation cloud monsoon বৃষ্টি মেঘ",
 t:{en:"How does it rain?",bn:"বৃষ্টি কীভাবে হয়?"},
 s:{en:"The sun turns water into invisible vapour, the sky cools it back into droplets, and the droplets fall.",bn:"সূর্যের তাপে পানি অদৃশ্য বাষ্পে পরিণত হয়, আকাশে ঠান্ডা হয়ে আবার ফোঁটা হয়, আর সেই ফোঁটা ঝরে পড়ে।"},
-svg:S(`<circle cx="42" cy="34" r="16" class="ln"/><g class="ln">${[0,45,90,135,180,225,270,315].map(a=>`<line x1="${42+Math.cos(a*Math.PI/180)*21}" y1="${34+Math.sin(a*Math.PI/180)*21}" x2="${42+Math.cos(a*Math.PI/180)*27}" y2="${34+Math.sin(a*Math.PI/180)*27}"/>`).join("")}</g><path class="fl" d="M0 150 H320 V190 H0 Z"/><path class="ln" d="M0 150 H320"/><path class="ln2" d="M110 148 V96 M140 148 V96 M170 148 V96"/><path class="ln" d="M105 96 a20 20 0 0 1 22-19 a26 26 0 0 1 49 6 a18 18 0 0 1 2 35 H120 a18 18 0 0 1-15-22 Z"/><path class="fl" d="M105 96 a20 20 0 0 1 22-19 a26 26 0 0 1 49 6 a18 18 0 0 1 2 35 H120 a18 18 0 0 1-15-22 Z"/><g class="ln"><line x1="118" y1="122" x2="112" y2="140"/><line x1="140" y1="122" x2="134" y2="142"/><line x1="162" y1="122" x2="156" y2="140"/><line x1="182" y1="122" x2="176" y2="138"/></g>${M(232,140,1)}${M(214,70,2)}${M(128,152,3)}`),
+svg:S(ILL[1]),
 legend:[{en:"Sunlight heats river and sea water until it rises as vapour",bn:"সূর্যের তাপে নদী ও সমুদ্রের পানি বাষ্প হয়ে উপরে ওঠে"},{en:"High in the cold air the vapour gathers into tiny droplets — a cloud",bn:"উপরের ঠান্ডা বাতাসে বাষ্প জমে ক্ষুদ্র জলকণা হয় — সেটাই মেঘ"},{en:"Droplets merge until they are too heavy to float, and fall as rain",bn:"জলকণা মিশে এত ভারী হয় যে ভেসে থাকতে পারে না, বৃষ্টি হয়ে ঝরে"}],
 body:{en:"Water is always moving in a great circle. Heat from the sun pulls it out of oceans, rivers and even wet soil as water vapour, which is a gas you cannot see. As that vapour rises it meets colder air, and cold air cannot hold as much vapour, so the water turns back into liquid around specks of dust — millions of these specks and droplets together are a cloud. When droplets collide and grow to about half a millimetre across, air can no longer hold them up and gravity brings them down.",bn:"পানি সব সময় একটি বড় চক্রে ঘুরছে। সূর্যের তাপ সমুদ্র, নদী, এমনকি ভেজা মাটি থেকেও পানিকে জলীয় বাষ্প করে টেনে তোলে, যা চোখে দেখা যায় না। এই বাষ্প উপরে উঠে ঠান্ডা বাতাসের সংস্পর্শে আসে, আর ঠান্ডা বাতাস বেশি বাষ্প ধরে রাখতে পারে না, তাই ধুলিকণাকে ঘিরে পানি আবার তরল হয়ে যায় — এমন লক্ষ লক্ষ কণা মিলেই মেঘ। ফোঁটাগুলো ধাক্কা খেয়ে বড় হতে হতে যখন প্রায় আধা মিলিমিটার হয়, বাতাস আর তাদের ধরে রাখতে পারে না, মাধ্যাকর্ষণ তাদের নিচে নামিয়ে আনে।"},
 pts:[{en:"Clouds are not vapour — they are liquid droplets you can actually see",bn:"মেঘ বাষ্প নয় — মেঘ হলো দৃশ্যমান তরল জলকণা"},{en:"A raindrop needs a dust or salt speck to form around, called a nucleus",bn:"বৃষ্টির ফোঁটা তৈরি হতে ধুলা বা লবণের কণা লাগে, একে নিউক্লিয়াস বলে"},{en:"Monsoon rain comes when sea winds carry huge amounts of vapour over hot land",bn:"সমুদ্রের বাতাস প্রচুর বাষ্প নিয়ে উত্তপ্ত ভূমিতে এলে মৌসুমি বৃষ্টি হয়"}]},
@@ -615,7 +763,7 @@ pts:[{en:"The Richter-style magnitude scale is logarithmic — each step is 32×
 {i:6,cat:"earth",k:"volcano magma lava eruption crater আগ্নেয়গিরি",
 t:{en:"How do volcanoes erupt?",bn:"আগ্নেয়গিরির অগ্ন্যুৎপাত কীভাবে হয়?"},
 s:{en:"Molten rock full of dissolved gas rises, the gas expands near the surface, and the mixture is blasted out.",bn:"গ্যাসভরা গলিত পাথর উপরে ওঠে, ভূপৃষ্ঠের কাছে গ্যাস প্রসারিত হয় এবং মিশ্রণটি বিস্ফোরিত হয়ে বেরোয়।"},
-svg:S(`<path class="ln" d="M20 172 L130 52 L150 52 L260 172"/><path class="fl" d="M20 172 L130 52 L150 52 L260 172 Z"/><path class="ln" d="M112 78 L168 78"/><path class="ln2" d="M132 172 V80 M148 172 V80"/><path class="fl2" d="M130 172 H150 V80 H130 Z"/><g class="ln"><path d="M128 50 q-14-26 4-40 M152 50 q14-26-4-40"/><circle cx="120" cy="26" r="5"/><circle cx="164" cy="18" r="6"/><circle cx="142" cy="8" r="7"/></g><path class="ln" d="M150 66 q28 30 56 60" stroke-dasharray="3 4"/>${M(140,150,1)}${M(140,66,2)}${M(196,30,3)}`),
+svg:S(ILL[6]),
 legend:[{en:"A chamber of magma collects deep under the mountain",bn:"পাহাড়ের গভীরে গলিত ম্যাগমার একটি প্রকোষ্ঠ জমে"},{en:"Magma rises up the vent and pressure drops",bn:"ম্যাগমা নালী বেয়ে উপরে ওঠে, চাপ কমতে থাকে"},{en:"Dissolved gas expands violently and throws out ash and lava",bn:"দ্রবীভূত গ্যাস তীব্রভাবে প্রসারিত হয়ে ছাই ও লাভা ছুড়ে দেয়"}],
 body:{en:"Deep underground, rock melts where plates sink or split, forming magma that is lighter than the solid rock around it, so it slowly floats upward. Dissolved in that magma are gases like water vapour and carbon dioxide, held down by enormous pressure — much like the gas in an unopened bottle of soda. As the magma nears the surface the pressure drops, bubbles form and expand hundreds of times over, and the frothing mixture is driven out of the vent. Runny magma produces gentle lava flows; thick, sticky magma traps gas until it erupts explosively.",bn:"ভূগর্ভের গভীরে, যেখানে প্লেট ডুবে যায় বা ফাটে সেখানে পাথর গলে ম্যাগমা তৈরি হয়, যা আশপাশের কঠিন পাথরের চেয়ে হালকা বলে ধীরে উপরে ভেসে ওঠে। সেই ম্যাগমায় জলীয় বাষ্প ও কার্বন ডাই-অক্সাইডের মতো গ্যাস প্রচণ্ড চাপে দ্রবীভূত থাকে — অনেকটা না-খোলা সোডার বোতলের মতো। ম্যাগমা ভূপৃষ্ঠের কাছে এলে চাপ কমে, বুদবুদ তৈরি হয়ে শত গুণ ফুলে ওঠে এবং ফেনায়িত মিশ্রণ নালী দিয়ে বেরিয়ে আসে। পাতলা ম্যাগমা শান্ত লাভাস্রোত তৈরি করে; ঘন আঠালো ম্যাগমা গ্যাস আটকে রেখে বিস্ফোরক অগ্ন্যুৎপাত ঘটায়।"},
 pts:[{en:"Magma is the name underground; once it pours out it is lava",bn:"ভূগর্ভে থাকলে ম্যাগমা, বেরিয়ে এলে সেটাই লাভা"},{en:"Volcanic ash is powdered rock, not burnt material",bn:"আগ্নেয় ছাই আসলে গুঁড়ো পাথর, পোড়া বস্তু নয়"},{en:"Volcanic soil is unusually fertile, which is why people farm near them",bn:"আগ্নেয় মাটি খুব উর্বর, তাই মানুষ কাছেই চাষ করে"}]},
@@ -905,7 +1053,7 @@ pts:[{en:"Leaves look green because chlorophyll reflects green light",bn:"পা
 {i:42,cat:"bio",k:"heart circulation blood pump artery vein হৃদপিণ্ড",
 t:{en:"How does the heart work?",bn:"হৃদপিণ্ড কীভাবে কাজ করে?"},
 s:{en:"A double pump: one side sends blood to the lungs for oxygen, the other drives it around the whole body.",bn:"দুই ভাগের পাম্প: এক পাশ রক্তকে অক্সিজেনের জন্য ফুসফুসে পাঠায়, অন্য পাশ তা সারা শরীরে ছড়ায়।"},
-svg:S(`<path class="ln" d="M160 168 q-64-44-64-84 a32 32 0 0 1 64-14 a32 32 0 0 1 64 14 q0 40-64 84 Z"/><path class="fl" d="M160 168 q-64-44-64-84 a32 32 0 0 1 64-14 V168 Z"/><path class="ln" d="M160 70 V168"/><g class="ln"><path d="M120 108 h32 M144 100 L152 108 L144 116"/><path d="M200 108 h-32 M176 100 L168 108 L176 116"/></g><g class="ln"><path d="M96 84 q-30-20-30-44 M224 84 q30-20 30-44"/><path d="M60 46 L66 36 L74 44"/></g><g class="ln"><path d="M160 190 V176"/></g>${M(112,140,1)}${M(208,140,2)}${M(66,30,3)}`),
+svg:S(ILL[42]),
 legend:[{en:"Right side receives used blood and sends it to the lungs",bn:"ডান পাশ ব্যবহৃত রক্ত নিয়ে ফুসফুসে পাঠায়"},{en:"Left side receives oxygen-rich blood and pumps it out",bn:"বাঁ পাশ অক্সিজেনসমৃদ্ধ রক্ত নিয়ে সারা শরীরে পাঠায়"},{en:"Valves stop blood from flowing backwards",bn:"কপাটিকা রক্তকে উল্টো দিকে যেতে দেয় না"}],
 body:{en:"The heart is a muscular pump divided into four chambers, and the two sides never mix. Blood returning from the body is low in oxygen and enters the right side, which pushes it a short distance to the lungs. There it picks up oxygen and returns to the left side, whose thicker muscular wall drives it out through the aorta to every tissue. One-way valves between chambers snap shut after each contraction, and it is that closing which produces the familiar double heartbeat sound. An adult heart beats roughly a hundred thousand times a day without rest.",bn:"হৃদপিণ্ড চার প্রকোষ্ঠে বিভক্ত একটি পেশিবহুল পাম্প, আর দুই পাশের রক্ত কখনো মেশে না। শরীর থেকে ফেরা রক্তে অক্সিজেন কম থাকে, তা ডান পাশে ঢোকে, যা তাকে অল্প দূরত্বে ফুসফুসে ঠেলে দেয়। সেখানে অক্সিজেন নিয়ে রক্ত বাঁ পাশে ফেরে, যার পুরু পেশিপ্রাচীর তাকে মহাধমনী দিয়ে প্রতিটি কলায় পাঠায়। প্রকোষ্ঠগুলোর মাঝের একমুখী কপাটিকা প্রতিটি সংকোচনের পর বন্ধ হয়ে যায়, আর সেই বন্ধ হওয়াই চেনা দ্বৈত হৃদস্পন্দনের শব্দ তৈরি করে। প্রাপ্তবয়স্কের হৃদপিণ্ড বিশ্রাম ছাড়াই দিনে প্রায় এক লাখ বার স্পন্দিত হয়।"},
 pts:[{en:"Arteries carry blood away from the heart, veins carry it back",bn:"ধমনী হৃদপিণ্ড থেকে রক্ত নিয়ে যায়, শিরা ফিরিয়ে আনে"},{en:"The heart has its own pacemaker cells and sets its own rhythm",bn:"হৃদপিণ্ডের নিজস্ব পেসমেকার কোষ আছে, তা নিজেই ছন্দ ঠিক করে"},{en:"Blood pressure readings give the peak and resting pressures",bn:"রক্তচাপের দুটি সংখ্যা সর্বোচ্চ ও বিশ্রামকালীন চাপ বোঝায়"}]},
@@ -1035,7 +1183,7 @@ pts:[{en:"A full lunar cycle takes about 29.5 days",bn:"পূর্ণ চা�
 {i:58,cat:"space",k:"black hole gravity event horizon singularity কৃষ্ণগহ্বর",
 t:{en:"What is a black hole?",bn:"কৃষ্ণগহ্বর কী?"},
 s:{en:"A region where matter is packed so densely that nothing which crosses its boundary can travel fast enough to escape.",bn:"এমন অঞ্চল যেখানে পদার্থ এত ঘনভাবে জমা যে সীমানা পেরোনো কিছুই পালানোর মতো গতি পায় না।"},
-svg:S(`<circle cx="160" cy="96" r="28" fill="currentColor" class="ln"/><circle cx="160" cy="96" r="46" class="ln" stroke-dasharray="5 4"/><ellipse cx="160" cy="96" rx="110" ry="28" class="ln"/><path class="fl2" d="M50 96 a110 28 0 0 0 220 0 Z"/><g class="ln2"><path d="M40 60 q60 20 108 34 M280 60 q-60 20-108 34"/></g><g class="ln"><path d="M20 150 q40-10 80-6" stroke-dasharray="3 4"/></g>${M(160,96,1)}${M(160,42,2)}${M(268,140,3)}`),
+svg:S(ILL[58]),
 legend:[{en:"The singularity — matter crushed to unimaginable density",bn:"সিঙ্গুলারিটি — অকল্পনীয় ঘনত্বে পিষে যাওয়া পদার্থ"},{en:"The event horizon is the point of no return",bn:"ঘটনা দিগন্তই সেই সীমা, যেখান থেকে ফেরা নেই"},{en:"Infalling gas heats up and glows brightly before crossing",bn:"পতনশীল গ্যাস সীমা পেরোনোর আগে উত্তপ্ত হয়ে উজ্জ্বল জ্বলে"}],
 body:{en:"Escape velocity is the speed needed to break free of an object's gravity. Compress enough mass into a small enough space and that required speed exceeds the speed of light — and since nothing can go faster, nothing can leave. That boundary is the event horizon, and it is not a solid surface but simply the line beyond which all paths lead inward. Most stellar black holes form when a massive star exhausts its fuel and collapses. They are not cosmic vacuum cleaners: at a distance their gravity behaves exactly like any other mass, and a black hole with the sun's mass would leave the earth's orbit unchanged.",bn:"মুক্তিবেগ হলো কোনো বস্তুর মাধ্যাকর্ষণ ছাড়িয়ে যেতে প্রয়োজনীয় গতি। যথেষ্ট ভরকে যথেষ্ট ছোট জায়গায় চেপে দিলে সেই প্রয়োজনীয় গতি আলোর গতিকেও ছাড়িয়ে যায় — আর যেহেতু কিছুই তার চেয়ে দ্রুত যেতে পারে না, কিছুই বেরোতেও পারে না। সেই সীমাই ঘটনা দিগন্ত, যা কোনো কঠিন পৃষ্ঠ নয়, কেবল সেই রেখা যার ওপারে সব পথই ভেতরের দিকে যায়। বেশিরভাগ নাক্ষত্রিক কৃষ্ণগহ্বর তৈরি হয় বিশাল ভরের নক্ষত্রের জ্বালানি ফুরিয়ে ধসে পড়লে। এরা মহাজাগতিক ভ্যাকুয়াম ক্লিনার নয়: দূর থেকে এদের মাধ্যাকর্ষণ অন্য যেকোনো ভরের মতোই আচরণ করে, আর সূর্যের সমান ভরের কৃষ্ণগহ্বর হলে পৃথিবীর কক্ষপথ একটুও বদলাত না।"},
 pts:[{en:"The first direct image of a black hole's shadow was released in 2019",bn:"কৃষ্ণগহ্বরের ছায়ার প্রথম সরাসরি ছবি প্রকাশ পায় ২০১৯ সালে"},{en:"Most large galaxies have a supermassive black hole at their centre",bn:"বেশিরভাগ বড় ছায়াপথের কেন্দ্রে অতিভারী কৃষ্ণগহ্বর থাকে"},{en:"They are detected by their effect on nearby stars and gas",bn:"কাছের নক্ষত্র ও গ্যাসের উপর প্রভাব দেখেই এদের শনাক্ত করা হয়"}]},

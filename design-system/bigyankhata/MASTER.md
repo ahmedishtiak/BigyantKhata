@@ -112,6 +112,13 @@ This file records the final design of PR #3. The site was audited against UI UX 
 - Stroke classes: `.ln` (ink 1.6px), `.ln2` (ink at 45%), `.fl` (ink at 7%), `.fl2` (accent-soft at 24%).
 - Markers `.mk` use an accent circle with `--on-accent` text.
 
+### Shaded illustrations
+- Follow `illustration-philosophy.md` (*Luminous Specimen*): one light source, natural colour range per subject, one hue that "burns", dense seeded repetition (rain, stars, strata).
+- Same 320×190 viewBox as the sketches. Gradients and filters live once in the page-level `<svg class="plate-defs">` (`bk-*` ids), never inside an illustration, so copies in hidden views still render.
+- Seeded randomness only (`RND(n)`), so every render is identical.
+- Markers sit on the exact part the legend names. They keep the accent fill and get a white ring so they read on photographic tones.
+- Done so far: 001 rain, 006 volcano, 042 heart, 058 black hole. The remaining topics still use line sketches.
+
 ### Forms
 - Every input and select has a **visible label** (`.field-lbl`, 12px mono), never a placeholder alone.
 - Search updates results as you type (debounced 120ms) and announces the count through `aria-live`.

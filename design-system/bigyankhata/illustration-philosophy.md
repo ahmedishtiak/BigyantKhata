@@ -1,0 +1,13 @@
+# Luminous Specimen
+
+*A visual philosophy for the notebook's illustrated plates.*
+
+A Luminous Specimen is a picture of a thing studied under good light. Every subject is treated as a specimen laid out on the bench: one object and one event, lit from a single direction and seen at the moment it explains itself. The image is realistic because it is patient, not because it copies a photograph. Light falls where it should. Shadows gather under forms. Materials read as what they are: water shows depth, rock shows grain, muscle has a wet sheen, and hot gas glows. Nothing is decorative. Every tone is there to tell the eye where a process begins and where it ends.
+
+Space is theatrical but honest. Each plate is a small stage with one strong silhouette against a quiet ground: an open sky, a studio backdrop, or the deep black of space. The subject sits slightly off-centre and leaves room for the event to move: vapour rises, gas spirals and blood leaves a chamber. Cutaways are allowed where the mechanism hides inside, but the cut stays clean, like a sectioned geological core, never a cartoon hatch. Depth comes from atmosphere. Distant forms soften and pale, and near forms sharpen and darken.
+
+Colour is natural first and chosen second. Each plate lives inside one controlled range: slate and pearl for weather, ember and basalt for fire, arterial crimson against venous indigo for the body, and white-hot gold on void for the cosmos. One hue is allowed to burn. It is the thing that changes state in the image, whether heat, light or oxygen. Everything else is tuned down around it. Gradients are soft and deliberate, grain is fine and even, and no colour appears without a physical reason.
+
+Rhythm comes from accumulation. Rain is made of a hundred individual streaks, stars are scattered to a patient, seeded randomness, and strata are laid band by band. These dense fields of repeated marks reward sustained looking, the way an engraver's cross-hatching does. They must feel meticulously crafted: countless small decisions, each placed with painstaking attention, that together read as one calm, inevitable surface.
+
+The numbered markers are the only graphic intrusion. Each is a small vermilion seal with a thin white ring, set exactly on the part of the image the legend describes. It sits on the illustration like a pin in a specimen tray. Text never enters the picture. The plate explains itself through form, and the markers only point. Everything else is master-level execution: shapes that close cleanly, no edge that is careless, no element that crowds the frame, and a finish that reads as the product of deep expertise and many hours at the drawing table.
